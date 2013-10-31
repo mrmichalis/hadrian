@@ -1,6 +1,6 @@
 #hadrian
 
-A set of utilities used to body-build a Hadoop cluster with the following:
+A set of utilities used to build a Hadoop cluster with the following:
 * CDH3
 * CDH4
 
