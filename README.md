@@ -1,8 +1,10 @@
 #hadrian
 
-A set of utilities used to build a Hadoop cluster with the following:
+A set of utilities used to build a Hadoop cluster with management tools.  The overall goal of this project is to allow rapid spin up of a variety of big data distributed systems on either physical or virtual platforms.
+
 * CDH3
 * CDH4
+* more distributions to follow.  Please see the wiki roadmap (coming soon).
 
 ##Features
 Hadrian was created to rapidly install and deploy a Cloudera Hadoop cluster onto both Openstack Virtual machines and physical machines. 
