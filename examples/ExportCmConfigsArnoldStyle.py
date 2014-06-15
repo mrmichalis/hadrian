@@ -45,31 +45,31 @@ def main():
         if not os.path.exists(conf_dir):
             os.makedirs(conf_dir)
 
-        for service in cluster.get_all_services():
-            with open(conf_dir + '/' + service.name + '.ini', 'w') as f:
-                print 'Dumping Service config for ' + service.name
-                rcg = list()
+            for service in cluster.get_all_services():
+                with open(conf_dir + '/' + service.name + '.ini', 'w') as f:
+                    print 'Dumping Service config for ' + service.name
+                    rcg = list()
 
-                for i in service.get_all_role_config_groups():
-                    rcg.append(i.name)
-                    f.write('[' + service.type + ']\n')
-                    f.write('config_groups=' + ','.join(rcg))
-                    f.write('\n\n')
-                    f.write('[' + service.name + '-svc-config]\n')
+                    for i in service.get_all_role_config_groups():
+                        rcg.append(i.name)
+                        f.write('[' + service.type + ']\n')
+                        f.write('config_groups=' + ','.join(rcg))
+                        f.write('\n\n')
+                        f.write('[' + service.name + '-svc-config]\n')
 
-                for item in service.get_config():
-                    for k,v in item.iteritems():
-                        f.write(k + '=' + str(v) + '\n')
+                    for item in service.get_config():
+                        for k,v in item.iteritems():
+                            f.write(k + '=' + str(v) + '\n')
 
-                for i in service.get_all_role_config_groups():
-                    f.write('\n')
-                    f.write('[' + i.name + ']\n')
-                    for k,v in i.get_config('full').iteritems():
-                        if v.value is not None:
-                            f.write(k + '=' + str(v.value) + '\n')
-                f.close()
-    else:
-        print 'Cluster config dir already exists.  Please rename or remove existing config dir: ' + conf_dir
+                    for i in service.get_all_role_config_groups():
+                        f.write('\n')
+                        f.write('[' + i.name + ']\n')
+                        for k,v in i.get_config('full').iteritems():
+                            if v.value is not None:
+                                f.write(k + '=' + str(v.value) + '\n')
+                    f.close()
+        else:
+            print 'Cluster config dir already exists.  Please rename or remove existing config dir: ' + conf_dir
 
 if __name__ == '__main__':
     main()

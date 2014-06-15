@@ -1,5 +1,6 @@
 ###################
 # Compiled source #
 ###################
+.idea
+.gitignore
 *.pyc
-
